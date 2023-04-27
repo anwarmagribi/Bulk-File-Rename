@@ -1,4 +1,4 @@
-import shutil, os, pprint
+import os
 from pathlib import Path
 from tkinter import *
 from tkinter.ttk import Separator
@@ -9,11 +9,13 @@ root.title('Bulk Rename')
 root.geometry("")
 root.resizable(True, True)
 
+
 def getDir():
     global directoryName
     directoryName = askdirectory()
     dirName = Label(root, text=directoryName, relief=SUNKEN).grid(column=1,row=1,columnspan=2,padx=(0,10),pady=(0,10))
     root.wm_geometry("")
+    # Checks if a directory has been selected and enables the buttons
     if directoryName:
         appendEntry.config(state=NORMAL)
         appendButton.config(state=NORMAL)
@@ -28,8 +30,11 @@ def getDir():
         makeUppercaseButton.config(state=NORMAL)
         makeLowercaseButton.config(state=NORMAL)
         makeTitleButton.config(state=NORMAL)
-        dirName.config(text=directoryName)
-       
+        showDirectoryButton.config(state=NORMAL)
+        '''
+        If a directory has already been chosen the 'Open' button
+        will move to the bottom and be named 'Open New'
+        '''
         getDirectory.grid_forget()
         getDirectory.config(text="Open New")
         getDirectory.grid(row=14, column=0)
@@ -58,6 +63,7 @@ def remove():
        if text2remove in str(i):
          os.rename(str(i), str(i).replace(text2remove,""))
          
+# Function to open a new window that shows the directory of files.        
 def openWindow():
     path = Path(directoryName).glob('*')
     newWindow = Toplevel(root)
@@ -202,7 +208,6 @@ makeTitleExample.grid(column=1, row=12, padx=(0, 20), sticky=W)
 
 makeTitleButton = Button(root, text="Apply",state=DISABLED, command=makeTitle, width=10)
 makeTitleButton.grid(row=12, column=2, padx=(0,50), pady=(0,10))
-
 
 separator4 = Separator(root, orient=HORIZONTAL)
 separator4.grid(row=13, column=0, columnspan=3, padx=20, pady=10, sticky='we')
