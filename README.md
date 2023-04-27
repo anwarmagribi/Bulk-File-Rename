@@ -9,6 +9,7 @@ It features the options to append text, prepend text, remove text, find &amp; re
 To use the program, please install the following in your command line:
 
 [Tkinter Documentation](https://docs.python.org/3/library/tkinter.html)
+
 Downloading Tkinter:
 ```
 pip install tk
@@ -16,6 +17,7 @@ pip install tk
 
 If you are using a Python Version lower than 3.4 you would need to install PathLib:
 
+Downloading PathLib:
 [PathLib Documentation](https://docs.python.org/3/library/pathlib.html)
 ```
 pip install pathlib2
